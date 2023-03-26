@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” />
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="animal.css">
     <title>Poultry Farm</title>
 </head>
 <body>
@@ -23,20 +23,19 @@
           <ul class="nav">
             <li>
               <a href="#">
-                <a class="nav-link active link-light" aria-current="page" href="#" style="color:white"><img src="dashboard.png" width="30" height="30"><i></i>Dashboard</a>
+                <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5501/dashboard.html"><img src="dashboard.png" width="30" height="30"><i></i>Dashboard</a>
               </a>
               
             </li>
             <li>
-               <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5501/air.html"><img src="wind.png" width="30" height="30"><i></i>Quality of the air</a>
+               <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5500/air.html"><img src="wind.png" width="30" height="30"><i></i>Quality of the air</a>
             </li>
             <li>
               <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5501/water.html"><img src="waterdrop.png" width="30" height="30"><i></i>Usage Of the Water</a>
            </li>
            <li>
-            <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5501/animal.html"><img src="chick.png" width="30" height="30"><i></i>Weight Per Animal</a>
+            <a class="nav-link active link-light" aria-current="page" href="http://127.0.0.1:5501/animal.html" style="color:white"><img src="chick.png" width="30" height="30"><i></i>Weight Per Animal</a>
          </li>
-            
              <li><br><br><br>
                 <a class="nav-link active link-light" aria-current="page" href="#"><img src="customer-support.png" width="20" height="20"><i></i>Services</a>
             </li>
@@ -48,29 +47,23 @@
             <div class="container-fluid">
               <ul class="nav navbar-nav navbar-right">
                 <div class="d-flex flex-row-reverse">
-                <center><img src="danger.webp" width="50" height="50" style="border-radius: 50%;" class="justify-content center"></center>
+                <center><img src="danger.webp" width="50" height="50" style="border-radius: 50%;"></center>
               </div>
               </ul>
             </div>
           </nav>
           <br>
           <div class="container-fluid">
-            <h1>Dashboard</h1>
+            <h1>Weight Per Animal</h1>
             <br><br>
             <div class="d-flex">
-             <div class="border border-dark w-25  p-5 mx-5" id="tempreature">
-                <br><br>
-                <h3>28 C</h3>
+             <center><div class="border border-dark w-15 p-5 mx-5" id="air">
                 
-             </div>
-             <label>Tempreature</label>
-             <div class="dashboard border border-dark w-25 p-5 mx-5" id="humidity">
-                <br><br>
-                <h3>75%</h3>
-               
-             </div>
-             <label>Humidity</label>
-            </div>
+               <label>2.6 KG</label>
+                
+             </div></center>
+          
+            
           </div>
       </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
