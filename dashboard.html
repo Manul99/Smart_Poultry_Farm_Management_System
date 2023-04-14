@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” />
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
     <link rel="stylesheet" href="dashboard.css">
     <title>Poultry Farm</title>
 </head>
@@ -48,7 +50,7 @@
             <div class="container-fluid">
               <ul class="nav navbar-nav navbar-right">
                 <div class="d-flex flex-row-reverse">
-                <center><img src="danger.webp" width="32" height="32" style="border-radius: 50%;" class="justify-content center"></center>
+                <h4 id="fire" style="color:red;"></h4>
               </div>
               </ul>
             </div>
@@ -57,22 +59,115 @@
           <div class="container-fluid">
             <h1>Dashboard</h1>
             <br><br>
-            <div class="d-flex">
-             <div class="border border-dark w-25  p-5 mx-5" id="tempreature">
-                <br><br>
-                <h3>28 C</h3>
+            <div class="card card-header d-flex p-5 mx-5" style="width: 95%;height:500px"><br><br><br><br>
+              <div class="d-inline-flex p-2 ">
+             <div class="dash border border-dark   p-5 mx-5" style="width:95%; height:150px;" >
+                
+               <center><label>Inside Tempreature</label></center>
+               <center><h3 id="temperatureIn"></h3></center>
                 
              </div>
-             <label>Tempreature</label>
-             <div class="dashboard border border-dark w-25 p-5 mx-5" id="humidity">
-                <br><br>
-                <h3>75%</h3>
+            
+             <div class="dash dashboard  border border-dark p-5 mx-5" style="width:95%; height:150px;">
+                
+                <center><label>Outside Temperature</label> <center>
+                <center><h3 id="temperatureOut"></h3></center>
                
              </div>
-             <label>Humidity</label>
+           
+
+             <div class="dash dashboard border border-dark p-5 mx-5" style="width:95%; height:150px;">
+              
+              <center><label>Humidity</label></center>
+              <center><h3 id="humidity"></h3></center>
+             
+           </div>
+          
             </div>
           </div>
+          </div>
       </div>
+
+      <script>
+        const firebaseConfig = {
+    apiKey: "AIzaSyAj31Qy5BvQBegY4-VEtPU3gZ2VNj9UD2U",
+    authDomain: "group-project-d5b80.firebaseapp.com",
+    databaseURL: "https://group-project-d5b80-default-rtdb.firebaseio.com",
+    projectId: "group-project-d5b80",
+    storageBucket: "group-project-d5b80.appspot.com",
+    messagingSenderId: "1059844056187",
+    appId: "1:1059844056187:web:24d8cccd1d62d66b5baede",
+    measurementId: "G-0YGKS4Z2PJ"
+  };
+
+  //Initialize firebase
+  firebase.initializeApp(firebaseConfig);
+
+  //get reference to the database service
+  var database = firebase.database();
+
+  //get reference  to the node
+  var dataRef=database.ref('Day-01/Temperature');
+
+  //Retrieve the data to the website
+  dataRef.child('Inside_Temperature').once('value').then(function(snapshot){
+    var InTemp=snapshot.val();
+    console.log(InTemp);
+
+    document.getElementById('temperatureIn').innerHTML=InTemp+" "+"C";
+  });
+
+      </script>
+
+      <script>
+        //get reference to the database service
+        var database=firebase.database();
+
+        //get reference to the node
+        var dataRef=database.ref('Day-01/Temperature');
+
+        //Retreive the data to the website
+        dataRef.child('Outside_Temperature').once('value').then(function(snapshot){
+          var outTemp=snapshot.val();
+          console.log(outTemp);
+
+          document.getElementById('temperatureOut').innerHTML=outTemp+" "+"C";
+        });
+      </script>
+
+</script>
+
+<script>
+  //get reference to the database service
+  var database=firebase.database();
+
+  //get reference to the node
+  var dataRef=database.ref('Day-01/MQ-135');
+
+  //Retreive the data to the website
+  dataRef.child('Humidity_Level').once('value').then(function(snapshot){
+    var humidity=snapshot.val();
+    console.log(humidity);
+
+    document.getElementById('humidity').innerHTML=humidity+" "+"%";
+  });
+</script>
+
+<script>
+  //get reference to the database service
+  var database=firebase.database();
+
+  //get reference to the node
+  var dataRef=database.ref('Day-01/IR_sensor');
+
+  //Retreive the data to the website
+  dataRef.child('Fire_Detected').once('value').then(function(snapshot){
+    var fire=snapshot.val();
+    console.log(fire);
+
+    document.getElementById('fire').innerHTML=fire;
+  });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
