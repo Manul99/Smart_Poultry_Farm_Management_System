@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  background:whitesmoke;
+  background-color:whitesmoke;
   background-repeat:no-repeat;
   background-size:cover;
 }
@@ -61,6 +61,7 @@ body {
 
 #content nav{
   background:#103542;
+  height:52px;
 }
 
  .nav a{
@@ -98,4 +99,9 @@ body {
 {
   background:linear-gradient(179.99deg, rgba(84, 72, 72, 0) -14.88%, #468d70 29.84%);
   border-radius: 2%;
+}
+
+.card
+{
+  background:linear-gradient(179.99deg, rgba(84, 72, 72, 0) -14.88%, #415762 29.84%);
 }
