@@ -53,29 +53,34 @@
               </div>
               </ul>
             </div>
-          </nav>
-          <br>
+          </nav><br>
           <div class="container-fluid">
-            <h1>Quality of the Air</h1>
-            <br><br>
-            <div class="d-flex">
-              <div class="border border-dark w-25  p-5 mx-5" >
-                <br><br>
-                <h5>Ammonia Level:<span id="ammonia" style="color:red;"></span></h5>
+          <h1>Air Quality</h1>
+          <br>
+          <div class="card card-header d-flex p-5 mx-5" style="width: 95%;height:500px"><br>
+            <div class="d-inline-flex p-2 ">
+              <div class="air border border-dark   p-5 mx-5" style="width:95%; height:150px;" >
+                <br>
+                <h5>Ammonia Level:<span id="ammonia" style="color:white"></span></h5>
                 <h5 id="status"></h5>
                 
              </div>
-             <label>Ammonia</label>
-
-             <div class="border border-dark w-25  p-5 mx-5" >
-              <br><br>
-              <h5>Smoke Detected:<span id="smoke" style="color:red;"></span></h5>
+             <div class="air border border-dark   p-5 mx-5" style="width:95%; height:150px;" >
+              <br>
+              <h5>Smoke Detected:<span id="smoke" style="color:white"></span></h5>
+              
               
            </div>
-           <label>Smoke</label>
+                       
+          
             
+         
+        
           </div>
+          
+           
       </div>
+    </div>
     
       <script>
           const firebaseConfig = {
@@ -97,7 +102,7 @@
   var database = firebase.database();
 
   //get reference  to the node
-  var dataRef=database.ref('Day-01/MQ-135');
+  var dataRef=database.ref('Cage/MQ-135');
 
   //Retrieve the data to the website
   dataRef.child('Ammonia_Level').once('value').then(function(snapshot){
@@ -114,7 +119,7 @@
   var database = firebase.database();
 
 //get reference  to the node
-var dataRef=database.ref('Day-01/MQ-135_sensors_status');
+var dataRef=database.ref('Cage/MQ-135_sensors_status');
 
 //Retrieve the data to the website
 dataRef.child('High_Ammonia').once('value').then(function(snapshot){
@@ -131,7 +136,7 @@ dataRef.child('High_Ammonia').once('value').then(function(snapshot){
   var database = firebase.database();
 
 //get reference  to the node
-var dataRef=database.ref('Day-01/MQ-135_sensors_status');
+var dataRef=database.ref('Cage/MQ-135_sensors_status');
 
 //Retrieve the data to the website
 dataRef.child('Smoke_Detected').once('value').then(function(snapshot){
@@ -147,7 +152,7 @@ dataRef.child('Smoke_Detected').once('value').then(function(snapshot){
   var database=firebase.database();
 
   //get reference to the node
-  var dataRef=database.ref('Day-01/IR_sensor');
+  var dataRef=database.ref('Cage/IR_sensor');
 
   //Retreive the data to the website
   dataRef.child('Fire_Detected').once('value').then(function(snapshot){

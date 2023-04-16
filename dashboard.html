@@ -57,32 +57,46 @@
           </nav>
           <br>
           <div class="container-fluid">
-            <h1>Dashboard</h1>
-            <br><br>
-            <div class="card card-header d-flex p-5 mx-5" style="width: 95%;height:500px"><br><br><br><br>
+            <h1>Dashboard</h1> 
+         
+         <br><br>   
+            <div class="card card-header d-flex p-5 mx-5" style="width: 95%;height:500px"><br>
               <div class="d-inline-flex p-2 ">
              <div class="dash border border-dark   p-5 mx-5" style="width:95%; height:150px;" >
                 
-               <center><label>Inside Tempreature</label></center>
-               <center><h3 id="temperatureIn"></h3></center>
+               <center><label><b>Inside Tempreature</b></label></center>
+               <center><h3 id="temperatureIn" style="color:white;"></h3></center>
                 
              </div>
             
-             <div class="dash dashboard  border border-dark p-5 mx-5" style="width:95%; height:150px;">
+             <div class="dash dashboard  border border-dark  p-5 mx-5" style="width:95%; height:150px;">
                 
-                <center><label>Outside Temperature</label> <center>
-                <center><h3 id="temperatureOut"></h3></center>
+                <center><label><b>Outside Temperature</b></label> <center>
+                <center><h3 id="temperatureOut" style="color:white;"></h3></center>
                
              </div>
            
+          
+            </div>
+            
 
-             <div class="dash dashboard border border-dark p-5 mx-5" style="width:95%; height:150px;">
+            <div  class="d-inline-flex p-2 ">
+              <div class="dash dashboard border border-dark p-4 mx-5" style="width:95%; height:160px;">
+              <br>
+                <center><label><b>Humidity</b></label></center>
+                <center><h3 id="humidity" style="color:white;"></h3></center>
+               
+             </div>
+             <div class="dash dashboard border border-dark p-4 mx-5" style="width:95%; height:160px;">
               
-              <center><label>Humidity</label></center>
-              <center><h3 id="humidity"></h3></center>
+              <h5>Birds Count:<h5 id="count" style="color:white;"></h5></h5>
+              <form>
+               <h5>Change birds count:</h5>
+               <input type="text" max="1000">
+               <input type="button"class="btn btn-dark" value="Submit">
+              </form>
              
            </div>
-          
             </div>
           </div>
           </div>
@@ -107,7 +121,7 @@
   var database = firebase.database();
 
   //get reference  to the node
-  var dataRef=database.ref('Day-01/Temperature');
+  var dataRef=database.ref('Cage/Temperature');
 
   //Retrieve the data to the website
   dataRef.child('Inside_Temperature').once('value').then(function(snapshot){
@@ -124,7 +138,7 @@
         var database=firebase.database();
 
         //get reference to the node
-        var dataRef=database.ref('Day-01/Temperature');
+        var dataRef=database.ref('Cage/Temperature');
 
         //Retreive the data to the website
         dataRef.child('Outside_Temperature').once('value').then(function(snapshot){
@@ -142,7 +156,7 @@
   var database=firebase.database();
 
   //get reference to the node
-  var dataRef=database.ref('Day-01/MQ-135');
+  var dataRef=database.ref('Cage/MQ-135');
 
   //Retreive the data to the website
   dataRef.child('Humidity_Level').once('value').then(function(snapshot){
@@ -158,7 +172,7 @@
   var database=firebase.database();
 
   //get reference to the node
-  var dataRef=database.ref('Day-01/IR_sensor');
+  var dataRef=database.ref('Cage/IR_sensor');
 
   //Retreive the data to the website
   dataRef.child('Fire_Detected').once('value').then(function(snapshot){
@@ -166,6 +180,21 @@
     console.log(fire);
 
     document.getElementById('fire').innerHTML=fire;
+  });
+</script>
+<script>
+  //get reference to the database service
+  var database=firebase.database();
+
+  //get reference to the node
+  var dataRef=database.ref('Cage');
+
+  //Retreive the data to the website
+  dataRef.child('Birds_Count').once('value').then(function(snapshot){
+    var count=snapshot.val();
+    console.log(count);
+
+    document.getElementById('count').innerHTML=count;
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

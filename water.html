@@ -58,17 +58,18 @@
           <div class="container-fluid">
             <h1>Usage Of The Water</h1>
             <br><br>
-            <div class="d-flex">
-             <center><div class="border border-dark w-15 p-5 mx-5">
+            <div class="card card-header d-flex p-5 mx-5" style="width: 95%;height:500px"><br>
+              <div class="d-inline-flex p-2 ">
+                <center><div class=" water border border-dark w-15 p-5 mx-5">
                 
-              <h5>Per Bird:<span id="water" style="color:red;"></span></h5>
-                
-             </div></center>
-          
+                  <h5>Per Bird:<span id="water" style="color:white;"></span></h5>
+                    
+                 </div></center>
+              </div>
             
-          </div>
+             
       </div>
-
+      </div>
       <script>
         const firebaseConfig = {
   apiKey: "AIzaSyAj31Qy5BvQBegY4-VEtPU3gZ2VNj9UD2U",
@@ -87,7 +88,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 //get reference  to the node
-var dataRef=database.ref('Day-01/Water_Usage');
+var dataRef=database.ref('Cage/Water_Usage');
 
 //Retrieve the data to the website
 dataRef.child('Per_Bird').once('value').then(function(snapshot){
@@ -103,7 +104,7 @@ document.getElementById('water').innerHTML=water;
     var database=firebase.database();
   
     //get reference to the node
-    var dataRef=database.ref('Day-01/IR_sensor');
+    var dataRef=database.ref('Cage/IR_sensor');
   
     //Retreive the data to the website
     dataRef.child('Fire_Detected').once('value').then(function(snapshot){
