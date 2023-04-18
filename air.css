@@ -107,3 +107,7 @@ body {
 {
   background:linear-gradient(179.99deg, rgba(84, 72, 72, 0) -14.88%, #415762 29.84%);
 }
+
+.btn{
+  margin: 5px ;
+}

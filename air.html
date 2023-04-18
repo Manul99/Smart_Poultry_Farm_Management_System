@@ -77,6 +77,31 @@
          
         
           </div>
+          <center> <div class="d-inline-flex p-2 ">
+            <div class="air border border-dark  p-5 mx-5" style="width:500px; height:230px;" >
+              
+              <div class="d-inline-flex p-2 ">
+                <div class="">
+                  <h2>Fan 1</h2>
+                     <button onclick="toggleFan(1, true)" class="btn btn-dark">Turn On</button>
+                     <button onclick="toggleFan(1, false)" class="btn btn-dark">Turn Off</button>
+                </div>
+                <div>
+                  <h2>Fan 2</h2>
+                     <button onclick="toggleFan(1, true)" class="btn btn-dark">Turn On</button>
+                     <button onclick="toggleFan(1, false)" class="btn btn-dark">Turn Off</button>
+                </div>
+                <div>
+                  <h2>Fan 3</h2>
+                     <button onclick="toggleFan(1, true)" class="btn btn-dark">Turn On</button>
+                     <button onclick="toggleFan(1, false)" class="btn btn-dark">Turn Off</button>
+                </div>
+              </div>
+              
+              
+           </div>
+                       
+          </div></center>
           
            
       </div>
@@ -136,10 +161,10 @@ dataRef.child('High_Ammonia').once('value').then(function(snapshot){
   var database = firebase.database();
 
 //get reference  to the node
-var dataRef=database.ref('Cage/MQ-135_sensors_status');
+var dataRef=database.ref('Cage');
 
 //Retrieve the data to the website
-dataRef.child('Smoke_Detected').once('value').then(function(snapshot){
+dataRef.child('SD').once('value').then(function(snapshot){
   var smoke=snapshot.val();
   console.log(smoke);
 
